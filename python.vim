@@ -1,6 +1,7 @@
 " Vim filetype plugin file
 " Language:	python
 " Maintainer:	James Sully <sullyj3@gmail.com>
+" Previous Maintainer: Johannes Zellner <johannes@zellner.org>
 " Last Change:	Fri, 10 June 2016
 " https://github.com/sullyj3/vim-ftplugin-python
 
