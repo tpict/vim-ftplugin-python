@@ -1,4 +1,4 @@
 # vim-ftplugin-python
 
-Repository for maintenence of `ftplugin/python.vim`
+Repository for maintenance of `ftplugin/python.vim`
 Contributions welcomed!
