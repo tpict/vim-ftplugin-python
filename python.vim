@@ -2,7 +2,7 @@
 " Language:	python
 " Maintainer:	James Sully <sullyj3@gmail.com>
 " Previous Maintainer: Johannes Zellner <johannes@zellner.org>
-" Last Change:	Wed, 29 June 2016
+" Last Change:	Fri, 02 September 2016
 " https://github.com/sullyj3/vim-ftplugin-python
 
 if exists("b:did_ftplugin") | finish | endif
