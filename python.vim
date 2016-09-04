@@ -2,7 +2,7 @@
 " Language:	python
 " Maintainer:	James Sully <sullyj3@gmail.com>
 " Previous Maintainer: Johannes Zellner <johannes@zellner.org>
-" Last Change:	Fri, 02 September 2016
+" Last Change:	Sun, 04 September 2016
 " https://github.com/sullyj3/vim-ftplugin-python
 
 if exists("b:did_ftplugin") | finish | endif
@@ -56,8 +56,10 @@ if has("browsefilter") && !exists("b:browsefilter")
                 \ "All Files (*.*)\t*.*\n"
 endif
 
-" As suggested by PEP8.
-setlocal expandtab shiftwidth=4 softtabstop=4 tabstop=8
+if !exists("g:python_recommended_style") || g:python_recommended_style != 0
+    " As suggested by PEP8.
+    setlocal expandtab shiftwidth=4 softtabstop=4 tabstop=8
+endif
 
 " First time: try finding "pydoc".
 if !exists('g:pydoc_executable')
