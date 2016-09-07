@@ -2,7 +2,7 @@
 " Language:	python
 " Maintainer:	James Sully <sullyj3@gmail.com>
 " Previous Maintainer: Johannes Zellner <johannes@zellner.org>
-" Last Change:	Sun, 04 September 2016
+" Last Change:	Tue, 06 September 2016
 " https://github.com/sullyj3/vim-ftplugin-python
 
 if exists("b:did_ftplugin") | finish | endif
@@ -22,15 +22,25 @@ setlocal omnifunc=pythoncomplete#Complete
 
 set wildignore+=*.pyc
 
-noremap <silent> <buffer> ]] :call <SID>Python_jump('n', '\v%$\|^(class\|def)>', 'W')<cr>
-noremap <silent> <buffer> [[ :call <SID>Python_jump('n', '\v^(class\|def)>', 'Wb')<cr>
-noremap <silent> <buffer> ]m :call <SID>Python_jump('n', '\v%$\|^\s*(class\|def)>', 'W')<cr>
-noremap <silent> <buffer> [m :call <SID>Python_jump('n', '\v^\s*(class\|def)>', 'Wb')<cr>
+let b:next_toplevel='\v%$\|^(class\|def)>'
+let b:prev_toplevel='\v^(class\|def)>'
+let b:next='\v%$\|^\s*(class\|def)>'
+let b:prev='\v^\s*(class\|def)>'
 
-xnoremap <silent> <buffer> ]] :call <SID>Python_jump('x', '\v%$\|^(class\|def)>', 'W')<cr>
-xnoremap <silent> <buffer> [[ :call <SID>Python_jump('x', '\v^(class\|def)>', 'Wb')<cr>
-xnoremap <silent> <buffer> ]m :call <SID>Python_jump('x', '\v%$\|^\s*(class\|def)>', 'W')<cr>
-xnoremap <silent> <buffer> [m :call <SID>Python_jump('x', '\v^\s*(class\|def)>', 'Wb')<cr>
+execute "nnoremap <silent> <buffer> ]] :call <SID>Python_jump('n', '". b:next_toplevel."', 'W')<cr>"
+execute "nnoremap <silent> <buffer> [[ :call <SID>Python_jump('n', '". b:prev_toplevel."', 'Wb')<cr>"
+execute "nnoremap <silent> <buffer> ]m :call <SID>Python_jump('n', '". b:next."', 'W')<cr>"
+execute "nnoremap <silent> <buffer> [m :call <SID>Python_jump('n', '". b:prev."', 'Wb')<cr>"
+
+execute "onoremap <silent> <buffer> ]] :call <SID>Python_jump('o', '". b:next_toplevel."', 'W')<cr>"
+execute "onoremap <silent> <buffer> [[ :call <SID>Python_jump('o', '". b:prev_toplevel."', 'Wb')<cr>"
+execute "onoremap <silent> <buffer> ]m :call <SID>Python_jump('o', '". b:next."', 'W')<cr>"
+execute "onoremap <silent> <buffer> [m :call <SID>Python_jump('o', '". b:prev."', 'Wb')<cr>"
+
+execute "xnoremap <silent> <buffer> ]] :call <SID>Python_jump('x', '". b:next_toplevel."', 'W')<cr>"
+execute "xnoremap <silent> <buffer> [[ :call <SID>Python_jump('x', '". b:prev_toplevel."', 'Wb')<cr>"
+execute "xnoremap <silent> <buffer> ]m :call <SID>Python_jump('x', '". b:next."', 'W')<cr>"
+execute "xnoremap <silent> <buffer> [m :call <SID>Python_jump('x', '". b:prev."', 'Wb')<cr>"
 
 if !exists('*<SID>Python_jump')
   fun! <SID>Python_jump(mode, motion, flags) range
