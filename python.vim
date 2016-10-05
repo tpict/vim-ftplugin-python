@@ -22,10 +22,10 @@ setlocal omnifunc=pythoncomplete#Complete
 
 set wildignore+=*.pyc
 
-let b:next_toplevel='\v%$\|^(class\|def\|async)>'
-let b:prev_toplevel='\v^(class\|def\|async)>'
-let b:next='\v%$\|^\s*(class\|def\|async)>'
-let b:prev='\v^\s*(class\|def\|async)>'
+let b:next_toplevel='\v%$\|^(class\|def\|async def)>'
+let b:prev_toplevel='\v^(class\|def\|async def)>'
+let b:next='\v%$\|^\s*(class\|def\|async def)>'
+let b:prev='\v^\s*(class\|def\|async def)>'
 
 execute "nnoremap <silent> <buffer> ]] :call <SID>Python_jump('n', '". b:next_toplevel."', 'W')<cr>"
 execute "nnoremap <silent> <buffer> [[ :call <SID>Python_jump('n', '". b:prev_toplevel."', 'Wb')<cr>"
