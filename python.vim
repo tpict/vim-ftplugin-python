@@ -1,9 +1,9 @@
 " Vim filetype plugin file
 " Language:	python
-" Maintainer:	James Sully <sullyj3@gmail.com>
-" Previous Maintainer: Johannes Zellner <johannes@zellner.org>
-" Last Change:	Thur, 04 May 2017
-" https://github.com/sullyj3/vim-ftplugin-python
+" Maintainer:	Tom Picton <tom@tompicton.co.uk>
+" Previous Maintainer: James Sully <sullyj3@gmail.com>
+" Last Change:	Fri, 20 October 2017
+" https://github.com/tpict/vim-ftplugin-python
 
 if exists("b:did_ftplugin") | finish | endif
 let b:did_ftplugin = 1
