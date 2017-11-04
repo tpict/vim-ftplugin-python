@@ -2,7 +2,8 @@
 " Language:	python
 " Maintainer:	Tom Picton <tom@tompicton.co.uk>
 " Previous Maintainer: James Sully <sullyj3@gmail.com>
-" Last Change:	Fri, 20 October 2017
+" Previous Maintainer: Johannes Zellner <johannes@zellner.org>
+" Last Change:	Sat, 04 November 2017
 " https://github.com/tpict/vim-ftplugin-python
 
 if exists("b:did_ftplugin") | finish | endif
