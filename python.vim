@@ -3,7 +3,7 @@
 " Maintainer:	Tom Picton <tom@tompicton.co.uk>
 " Previous Maintainer: James Sully <sullyj3@gmail.com>
 " Previous Maintainer: Johannes Zellner <johannes@zellner.org>
-" Last Change:	Sat, 04 November 2017
+" Last Change:	Thur, 09 November 2017
 " https://github.com/tpict/vim-ftplugin-python
 
 if exists("b:did_ftplugin") | finish | endif
@@ -29,8 +29,8 @@ let b:next_endtoplevel='\v%$\|\S.*\n+(def\|class)'
 let b:prev_endtoplevel='\v\S.*\n+(def\|class)'
 let b:next='\v%$\|^\s*(class\|def\|async def)>'
 let b:prev='\v^\s*(class\|def\|async def)>'
-let b:next_end='\v\S\n*(%$\|^\s*(class\|def\|async def)\|^\S)'
-let b:prev_end='\v\S\n*(^\s*(class\|def\|async def)\|^\S)'
+let b:next_end='\v\S\n*(%$\|^(\s*\n*)*(class\|def\|async def)\|^\S)'
+let b:prev_end='\v\S\n*(^(\s*\n*)*(class\|def\|async def)\|^\S)'
 
 execute "nnoremap <silent> <buffer> ]] :call <SID>Python_jump('n', '". b:next_toplevel."', 'W')<cr>"
 execute "nnoremap <silent> <buffer> [[ :call <SID>Python_jump('n', '". b:prev_toplevel."', 'Wb')<cr>"
