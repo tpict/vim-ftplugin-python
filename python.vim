@@ -14,7 +14,7 @@ set cpo&vim
 setlocal cinkeys-=0#
 setlocal indentkeys-=0#
 setlocal include=^\\s*\\(from\\\|import\\)
-setlocal includeexpr=substitute(v:fname,'\\.','/','g')
+setlocal includeexpr=substitute(substitute(v:fname,'\\(.\\)\\.','\\1/','g'),'\\.','','g')
 setlocal suffixesadd=.py
 setlocal comments=b:#,fb:-
 setlocal commentstring=#\ %s
