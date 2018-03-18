@@ -3,7 +3,7 @@
 " Maintainer:	Tom Picton <tom@tompicton.co.uk>
 " Previous Maintainer: James Sully <sullyj3@gmail.com>
 " Previous Maintainer: Johannes Zellner <johannes@zellner.org>
-" Last Change:	Sat, 17 March 2018
+" Last Change:	Sun, 18 March 2018
 " https://github.com/tpict/vim-ftplugin-python
 
 if exists("b:did_ftplugin") | finish | endif
@@ -27,10 +27,9 @@ let b:parent_sub = './'
 let b:child_match = '\(\w\)\.\(\w\)'
 let b:child_sub = '\1/\2'
 
-setlocal includeexpr=substitute(
-      \substitute(
-      \substitute(
-      \v:fname,b:grandparent_match,b:grandparent_sub,'g'),
+setlocal includeexpr=substitute(substitute(substitute(
+      \v:fname,
+      \b:grandparent_match,b:grandparent_sub,''),
       \b:parent_match,b:parent_sub,''),
       \b:child_match,b:child_sub,'g')
 
