@@ -37,10 +37,10 @@ setlocal suffixesadd=.py
 setlocal comments=b:#,fb:-
 setlocal commentstring=#\ %s
 
-" Do not overwrite existing omnifunc
-if &omnifunc == ''
-  if has('python') | setlocal omnifunc=pythoncomplete#Complete | endif
-  if has('python3') | setlocal omnifunc=python3complete#Complete | endif
+if has('python3')
+  setlocal omnifunc=python3complete#Complete 
+elseif has('python')
+  setlocal omnifunc=pythoncomplete#Complete
 endif
 
 set wildignore+=*.pyc
