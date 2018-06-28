@@ -3,7 +3,7 @@
 " Maintainer:	Tom Picton <tom@tompicton.co.uk>
 " Previous Maintainer: James Sully <sullyj3@gmail.com>
 " Previous Maintainer: Johannes Zellner <johannes@zellner.org>
-" Last Change:	Sun, 15 April 2018
+" Last Change:	Tue, 26 June 2018
 " https://github.com/tpict/vim-ftplugin-python
 
 if exists("b:did_ftplugin") | finish | endif
@@ -37,9 +37,10 @@ setlocal suffixesadd=.py
 setlocal comments=b:#,fb:-
 setlocal commentstring=#\ %s
 
-setlocal omnifunc=pythoncomplete#Complete
 if has('python3')
-       setlocal omnifunc=python3complete#Complete
+  setlocal omnifunc=python3complete#Complete 
+elseif has('python')
+  setlocal omnifunc=pythoncomplete#Complete
 endif
 
 set wildignore+=*.pyc
