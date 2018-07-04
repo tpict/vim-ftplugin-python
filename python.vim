@@ -3,7 +3,7 @@
 " Maintainer:	Tom Picton <tom@tompicton.co.uk>
 " Previous Maintainer: James Sully <sullyj3@gmail.com>
 " Previous Maintainer: Johannes Zellner <johannes@zellner.org>
-" Last Change:	Tue, 26 June 2018
+" Last Change:	Tue, 05 July 2018
 " https://github.com/tpict/vim-ftplugin-python
 
 if exists("b:did_ftplugin") | finish | endif
@@ -128,6 +128,61 @@ endif
 if g:pydoc_executable
     setlocal keywordprg=pydoc
 endif
+
+" Script for filetype switching to undo the local stuff we may have changed
+let b:undo_ftplugin = 'setlocal cinkeys<'
+      \ . '|setlocal comments<'
+      \ . '|setlocal commentstring<'
+      \ . '|setlocal expandtab<'
+      \ . '|setlocal include<'
+      \ . '|setlocal includeexpr<'
+      \ . '|setlocal indentkeys<'
+      \ . '|setlocal keywordprg<'
+      \ . '|setlocal omnifunc<'
+      \ . '|setlocal shiftwidth<'
+      \ . '|setlocal softtabstop<'
+      \ . '|setlocal suffixesadd<'
+      \ . '|setlocal tabstop<'
+      \ . '|silent! nunmap <buffer> [M'
+      \ . '|silent! nunmap <buffer> [['
+      \ . '|silent! nunmap <buffer> []'
+      \ . '|silent! nunmap <buffer> [m'
+      \ . '|silent! nunmap <buffer> ]M'
+      \ . '|silent! nunmap <buffer> ]['
+      \ . '|silent! nunmap <buffer> ]]'
+      \ . '|silent! nunmap <buffer> ]m'
+      \ . '|silent! ounmap <buffer> [M'
+      \ . '|silent! ounmap <buffer> [['
+      \ . '|silent! ounmap <buffer> []'
+      \ . '|silent! ounmap <buffer> [m'
+      \ . '|silent! ounmap <buffer> ]M'
+      \ . '|silent! ounmap <buffer> ]['
+      \ . '|silent! ounmap <buffer> ]]'
+      \ . '|silent! ounmap <buffer> ]m'
+      \ . '|silent! xunmap <buffer> [M'
+      \ . '|silent! xunmap <buffer> [['
+      \ . '|silent! xunmap <buffer> []'
+      \ . '|silent! xunmap <buffer> [m'
+      \ . '|silent! xunmap <buffer> ]M'
+      \ . '|silent! xunmap <buffer> ]['
+      \ . '|silent! xunmap <buffer> ]]'
+      \ . '|silent! xunmap <buffer> ]m'
+      \ . '|unlet! b:browsefilter'
+      \ . '|unlet! b:child_match'
+      \ . '|unlet! b:child_sub'
+      \ . '|unlet! b:grandparent_match'
+      \ . '|unlet! b:grandparent_sub'
+      \ . '|unlet! b:next'
+      \ . '|unlet! b:next_end'
+      \ . '|unlet! b:next_endtoplevel'
+      \ . '|unlet! b:next_toplevel'
+      \ . '|unlet! b:parent_match'
+      \ . '|unlet! b:parent_sub'
+      \ . '|unlet! b:prev'
+      \ . '|unlet! b:prev_end'
+      \ . '|unlet! b:prev_endtoplevel'
+      \ . '|unlet! b:prev_toplevel'
+      \ . '|unlet! b:undo_ftplugin'
 
 let &cpo = s:keepcpo
 unlet s:keepcpo
