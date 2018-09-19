@@ -3,7 +3,7 @@
 " Maintainer:	Tom Picton <tom@tompicton.co.uk>
 " Previous Maintainer: James Sully <sullyj3@gmail.com>
 " Previous Maintainer: Johannes Zellner <johannes@zellner.org>
-" Last Change:	Tue, 05 July 2018
+" Last Change:	Wed, 19 September 2018
 " https://github.com/tpict/vim-ftplugin-python
 
 if exists("b:did_ftplugin") | finish | endif
@@ -124,9 +124,24 @@ if !exists('g:pydoc_executable')
         let g:pydoc_executable = 0
     endif
 endif
+
+" Windows-specific pydoc setup
+if has('win32') || has('win64')
+    if executable('python')
+        " available as Tools\scripts\pydoc.py
+        let g:pydoc_executable = 1
+    else
+        let g:pydoc_executable = 0
+    endif
+endif
+
 " If "pydoc" was found use it for keywordprg.
 if g:pydoc_executable
-    setlocal keywordprg=pydoc
+    if has('win32') || has('win64')
+        setlocal keywordprg=python\ -m\ pydoc\ 
+    else
+        setlocal keywordprg=pydoc
+    endif
 endif
 
 " Script for filetype switching to undo the local stuff we may have changed
