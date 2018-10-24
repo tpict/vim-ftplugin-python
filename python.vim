@@ -3,7 +3,7 @@
 " Maintainer:	Tom Picton <tom@tompicton.co.uk>
 " Previous Maintainer: James Sully <sullyj3@gmail.com>
 " Previous Maintainer: Johannes Zellner <johannes@zellner.org>
-" Last Change:	Wed, 19 September 2018
+" Last Change:	Thu, 25 October 2018
 " https://github.com/tpict/vim-ftplugin-python
 
 if exists("b:did_ftplugin") | finish | endif
@@ -54,32 +54,34 @@ let b:prev='\v^\s*(class\|def\|async def)>'
 let b:next_end='\v\S\n*(%$\|^(\s*\n*)*(class\|def\|async def)\|^\S)'
 let b:prev_end='\v\S\n*(^(\s*\n*)*(class\|def\|async def)\|^\S)'
 
-execute "nnoremap <silent> <buffer> ]] :call <SID>Python_jump('n', '". b:next_toplevel."', 'W', v:count1)<cr>"
-execute "nnoremap <silent> <buffer> [[ :call <SID>Python_jump('n', '". b:prev_toplevel."', 'Wb', v:count1)<cr>"
-execute "nnoremap <silent> <buffer> ][ :call <SID>Python_jump('n', '". b:next_endtoplevel."', 'W', 0, v:count1)<cr>"
-execute "nnoremap <silent> <buffer> [] :call <SID>Python_jump('n', '". b:prev_endtoplevel."', 'Wb', 0, v:count1)<cr>"
-execute "nnoremap <silent> <buffer> ]m :call <SID>Python_jump('n', '". b:next."', 'W', v:count1)<cr>"
-execute "nnoremap <silent> <buffer> [m :call <SID>Python_jump('n', '". b:prev."', 'Wb', v:count1)<cr>"
-execute "nnoremap <silent> <buffer> ]M :call <SID>Python_jump('n', '". b:next_end."', 'W', 0, v:count1)<cr>"
-execute "nnoremap <silent> <buffer> [M :call <SID>Python_jump('n', '". b:prev_end."', 'Wb', 0, v:count1)<cr>"
+if !exists('g:no_plugin_maps') && !exists('g:no_python_maps')
+    execute "nnoremap <silent> <buffer> ]] :call <SID>Python_jump('n', '". b:next_toplevel."', 'W', v:count1)<cr>"
+    execute "nnoremap <silent> <buffer> [[ :call <SID>Python_jump('n', '". b:prev_toplevel."', 'Wb', v:count1)<cr>"
+    execute "nnoremap <silent> <buffer> ][ :call <SID>Python_jump('n', '". b:next_endtoplevel."', 'W', 0, v:count1)<cr>"
+    execute "nnoremap <silent> <buffer> [] :call <SID>Python_jump('n', '". b:prev_endtoplevel."', 'Wb', 0, v:count1)<cr>"
+    execute "nnoremap <silent> <buffer> ]m :call <SID>Python_jump('n', '". b:next."', 'W', v:count1)<cr>"
+    execute "nnoremap <silent> <buffer> [m :call <SID>Python_jump('n', '". b:prev."', 'Wb', v:count1)<cr>"
+    execute "nnoremap <silent> <buffer> ]M :call <SID>Python_jump('n', '". b:next_end."', 'W', 0, v:count1)<cr>"
+    execute "nnoremap <silent> <buffer> [M :call <SID>Python_jump('n', '". b:prev_end."', 'Wb', 0, v:count1)<cr>"
 
-execute "onoremap <silent> <buffer> ]] :call <SID>Python_jump('o', '". b:next_toplevel."', 'W', v:count1)<cr>"
-execute "onoremap <silent> <buffer> [[ :call <SID>Python_jump('o', '". b:prev_toplevel."', 'Wb', v:count1)<cr>"
-execute "onoremap <silent> <buffer> ][ :call <SID>Python_jump('o', '". b:next_endtoplevel."', 'W', 0, v:count1)<cr>"
-execute "onoremap <silent> <buffer> [] :call <SID>Python_jump('o', '". b:prev_endtoplevel."', 'Wb', 0, v:count1)<cr>"
-execute "onoremap <silent> <buffer> ]m :call <SID>Python_jump('o', '". b:next."', 'W', v:count1)<cr>"
-execute "onoremap <silent> <buffer> [m :call <SID>Python_jump('o', '". b:prev."', 'Wb', v:count1)<cr>"
-execute "onoremap <silent> <buffer> ]M :call <SID>Python_jump('o', '". b:next_end."', 'W', 0, v:count1)<cr>"
-execute "onoremap <silent> <buffer> [M :call <SID>Python_jump('o', '". b:prev_end."', 'Wb', 0, v:count1)<cr>"
+    execute "onoremap <silent> <buffer> ]] :call <SID>Python_jump('o', '". b:next_toplevel."', 'W', v:count1)<cr>"
+    execute "onoremap <silent> <buffer> [[ :call <SID>Python_jump('o', '". b:prev_toplevel."', 'Wb', v:count1)<cr>"
+    execute "onoremap <silent> <buffer> ][ :call <SID>Python_jump('o', '". b:next_endtoplevel."', 'W', 0, v:count1)<cr>"
+    execute "onoremap <silent> <buffer> [] :call <SID>Python_jump('o', '". b:prev_endtoplevel."', 'Wb', 0, v:count1)<cr>"
+    execute "onoremap <silent> <buffer> ]m :call <SID>Python_jump('o', '". b:next."', 'W', v:count1)<cr>"
+    execute "onoremap <silent> <buffer> [m :call <SID>Python_jump('o', '". b:prev."', 'Wb', v:count1)<cr>"
+    execute "onoremap <silent> <buffer> ]M :call <SID>Python_jump('o', '". b:next_end."', 'W', 0, v:count1)<cr>"
+    execute "onoremap <silent> <buffer> [M :call <SID>Python_jump('o', '". b:prev_end."', 'Wb', 0, v:count1)<cr>"
 
-execute "xnoremap <silent> <buffer> ]] :call <SID>Python_jump('x', '". b:next_toplevel."', 'W', v:count1)<cr>"
-execute "xnoremap <silent> <buffer> [[ :call <SID>Python_jump('x', '". b:prev_toplevel."', 'Wb', v:count1)<cr>"
-execute "xnoremap <silent> <buffer> ][ :call <SID>Python_jump('x', '". b:next_endtoplevel."', 'W', 0, v:count1)<cr>"
-execute "xnoremap <silent> <buffer> [] :call <SID>Python_jump('x', '". b:prev_endtoplevel."', 'Wb', 0, v:count1)<cr>"
-execute "xnoremap <silent> <buffer> ]m :call <SID>Python_jump('x', '". b:next."', 'W', v:count1)<cr>"
-execute "xnoremap <silent> <buffer> [m :call <SID>Python_jump('x', '". b:prev."', 'Wb', v:count1)<cr>"
-execute "xnoremap <silent> <buffer> ]M :call <SID>Python_jump('x', '". b:next_end."', 'W', 0, v:count1)<cr>"
-execute "xnoremap <silent> <buffer> [M :call <SID>Python_jump('x', '". b:prev_end."', 'Wb', 0, v:count1)<cr>"
+    execute "xnoremap <silent> <buffer> ]] :call <SID>Python_jump('x', '". b:next_toplevel."', 'W', v:count1)<cr>"
+    execute "xnoremap <silent> <buffer> [[ :call <SID>Python_jump('x', '". b:prev_toplevel."', 'Wb', v:count1)<cr>"
+    execute "xnoremap <silent> <buffer> ][ :call <SID>Python_jump('x', '". b:next_endtoplevel."', 'W', 0, v:count1)<cr>"
+    execute "xnoremap <silent> <buffer> [] :call <SID>Python_jump('x', '". b:prev_endtoplevel."', 'Wb', 0, v:count1)<cr>"
+    execute "xnoremap <silent> <buffer> ]m :call <SID>Python_jump('x', '". b:next."', 'W', v:count1)<cr>"
+    execute "xnoremap <silent> <buffer> [m :call <SID>Python_jump('x', '". b:prev."', 'Wb', v:count1)<cr>"
+    execute "xnoremap <silent> <buffer> ]M :call <SID>Python_jump('x', '". b:next_end."', 'W', 0, v:count1)<cr>"
+    execute "xnoremap <silent> <buffer> [M :call <SID>Python_jump('x', '". b:prev_end."', 'Wb', 0, v:count1)<cr>"
+endif
 
 if !exists('*<SID>Python_jump')
   fun! <SID>Python_jump(mode, motion, flags, count, ...) range
