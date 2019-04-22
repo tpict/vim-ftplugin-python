@@ -38,7 +38,7 @@ setlocal comments=b:#,fb:-
 setlocal commentstring=#\ %s
 
 if has('python3')
-  setlocal omnifunc=python3complete#Complete 
+  setlocal omnifunc=python3complete#Complete
 elseif has('python')
   setlocal omnifunc=pythoncomplete#Complete
 endif
@@ -118,32 +118,11 @@ if !exists("g:python_recommended_style") || g:python_recommended_style != 0
     setlocal expandtab shiftwidth=4 softtabstop=4 tabstop=8
 endif
 
-" First time: try finding "pydoc".
-if !exists('g:pydoc_executable')
-    if executable('pydoc')
-        let g:pydoc_executable = 1
-    else
-        let g:pydoc_executable = 0
-    endif
-endif
-
-" Windows-specific pydoc setup
-if has('win32') || has('win64')
-    if executable('python')
-        " available as Tools\scripts\pydoc.py
-        let g:pydoc_executable = 1
-    else
-        let g:pydoc_executable = 0
-    endif
-endif
-
-" If "pydoc" was found use it for keywordprg.
-if g:pydoc_executable
-    if has('win32') || has('win64')
-        setlocal keywordprg=python\ -m\ pydoc\ 
-    else
-        setlocal keywordprg=pydoc
-    endif
+" Use pydoc for keywordprg
+if executable('python3')
+  setlocal keywordprg=python3\ -m\ pydoc\ 
+elseif executable('python')
+  setlocal keywordprg=python\ -m\ pydoc\ 
 endif
 
 " Script for filetype switching to undo the local stuff we may have changed
