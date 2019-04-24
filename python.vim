@@ -120,9 +120,9 @@ endif
 
 " Use pydoc for keywordprg
 if executable('python3')
-  setlocal keywordprg=python3\ -m\ pydoc\ 
+  setlocal keywordprg=python3\ -m\ pydoc
 elseif executable('python')
-  setlocal keywordprg=python\ -m\ pydoc\ 
+  setlocal keywordprg=python\ -m\ pydoc
 endif
 
 " Script for filetype switching to undo the local stuff we may have changed
