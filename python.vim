@@ -3,7 +3,7 @@
 " Maintainer:	Tom Picton <tom@tompicton.co.uk>
 " Previous Maintainer: James Sully <sullyj3@gmail.com>
 " Previous Maintainer: Johannes Zellner <johannes@zellner.org>
-" Last Change:	Sun 17 Mar 2019
+" Last Change:	Thur 25 April 2019
 " https://github.com/tpict/vim-ftplugin-python
 
 if exists("b:did_ftplugin") | finish | endif
@@ -118,7 +118,11 @@ if !exists("g:python_recommended_style") || g:python_recommended_style != 0
     setlocal expandtab shiftwidth=4 softtabstop=4 tabstop=8
 endif
 
-" Use pydoc for keywordprg
+" Use pydoc for keywordprg.
+" Unix users preferentially get pydoc3, then pydoc2.
+" Windows doesn't have a standalone pydoc executable in $PATH by default, nor
+" does it have separate python2/3 executables, so Windows users just get
+" whichever version corresponds to their installed Python version.
 if executable('python3')
   setlocal keywordprg=python3\ -m\ pydoc
 elseif executable('python')
