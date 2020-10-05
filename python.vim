@@ -3,7 +3,7 @@
 " Maintainer:	Tom Picton <tom@tompicton.co.uk>
 " Previous Maintainer: James Sully <sullyj3@gmail.com>
 " Previous Maintainer: Johannes Zellner <johannes@zellner.org>
-" Last Change:	Fri, 20 March 2020
+" Last Change:	Mon, 5 October 2020
 " https://github.com/tpict/vim-ftplugin-python
 
 if exists("b:did_ftplugin") | finish | endif
@@ -116,7 +116,7 @@ endif
 
 if !exists("g:python_recommended_style") || g:python_recommended_style != 0
     " As suggested by PEP8.
-    setlocal expandtab shiftwidth=4 softtabstop=4 tabstop=8
+    setlocal expandtab tabstop=4 softtabstop=4 shiftwidth=4
 endif
 
 " Use pydoc for keywordprg.
