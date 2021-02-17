@@ -28,9 +28,11 @@ let b:parent_sub = './'
 let b:child_match = '\(\w\)\.\(\w\)'
 let b:child_sub = '\1/\2'
 
-" Support for built-in "matchit" plugin
-let b:match_words = '\<if\>:\<elif\>:\<else\>'
-let b:match_skip  = 'R:^\s*'
+" Matchit support
+if exists('loaded_matchit') && !exists('b:match_words')
+  let b:match_words = '\<if\>:\<elif\>:\<else\>'
+  let b:match_skip = 'R:^\s*'
+endif
 
 setlocal includeexpr=substitute(substitute(substitute(
       \v:fname,
