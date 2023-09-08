@@ -42,6 +42,8 @@ if has('python3')
   setlocal omnifunc=python3complete#Complete
 elseif has('python')
   setlocal omnifunc=pythoncomplete#Complete
+else " see :help ft-syntax-omni
+  setlocal omnifunc=syntaxcomplete#Complete
 endif
 
 set wildignore+=*.pyc
