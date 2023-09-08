@@ -14,7 +14,7 @@ set cpo&vim
 setlocal cinkeys-=0#
 setlocal indentkeys-=0#
 setlocal include=^\\s*\\(from\\\|import\\)
-setlocal define=^\\s*\\(def\\\|class\\)
+setlocal define=^\\s*\\([async ]\\?def\\\|class\\)
 
 " For imports with leading .., append / and replace additional .s with ../
 let b:grandparent_match = '^\(.\.\)\(\.*\)'
