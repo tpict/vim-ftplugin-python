@@ -3,7 +3,7 @@
 " Maintainer:	Tom Picton <tom@tompicton.co.uk>
 " Previous Maintainer: James Sully <sullyj3@gmail.com>
 " Previous Maintainer: Johannes Zellner <johannes@zellner.org>
-" Last Change:	Wed, 8 September 2021
+" Last Change:	Fri, 8 September 2023
 " https://github.com/tpict/vim-ftplugin-python
 
 if exists("b:did_ftplugin") | finish | endif
@@ -42,6 +42,8 @@ if has('python3')
   setlocal omnifunc=python3complete#Complete
 elseif has('python')
   setlocal omnifunc=pythoncomplete#Complete
+else " see :help ft-syntax-omni
+  setlocal omnifunc=syntaxcomplete#Complete
 endif
 
 set wildignore+=*.pyc
