@@ -3,7 +3,7 @@
 " Maintainer:	Tom Picton <tom@tompicton.co.uk>
 " Previous Maintainer: James Sully <sullyj3@gmail.com>
 " Previous Maintainer: Johannes Zellner <johannes@zellner.org>
-" Last Change:	2023/09/08
+" Last Change:	2024/05/11
 " https://github.com/tpict/vim-ftplugin-python
 
 if exists("b:did_ftplugin") | finish | endif
@@ -87,7 +87,6 @@ endif
 if !exists('*<SID>Python_jump')
   fun! <SID>Python_jump(mode, motion, flags, count, ...) range
       let l:startofline = (a:0 >= 1) ? a:1 : 1
-      normal m'
 
       if a:mode == 'x'
           normal! gv
@@ -98,6 +97,7 @@ if !exists('*<SID>Python_jump')
       endif
 
       let cnt = a:count
+      mark '
       while cnt > 0
           call search(a:motion, a:flags)
           let cnt = cnt - 1
@@ -110,8 +110,12 @@ if !exists('*<SID>Python_jump')
 endif
 
 if has("browsefilter") && !exists("b:browsefilter")
-    let b:browsefilter = "Python Files (*.py)\t*.py\n" .
-                \ "All Files (*.*)\t*.*\n"
+    let b:browsefilter = "Python Files (*.py)\t*.py\n"
+    if has("win32")
+	let b:browsefilter .= "All Files (*.*)\t*\n"
+    else
+	let b:browsefilter .= "All Files (*)\t*\n"
+    endif
 endif
 
 if !exists("g:python_recommended_style") || g:python_recommended_style != 0
