@@ -1,6 +1,6 @@
 " Vim filetype plugin file
 " Language:	python
-" Maintainer:	Tom Picton <tom@tompicton.co.uk>
+" Maintainer:	Tom Picton <tom@tompicton.com>
 " Previous Maintainer: James Sully <sullyj3@gmail.com>
 " Previous Maintainer: Johannes Zellner <johannes@zellner.org>
 " Last Change:	2024/05/11
