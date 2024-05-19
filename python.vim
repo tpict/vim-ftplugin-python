@@ -28,6 +28,12 @@ let b:parent_sub = './'
 let b:child_match = '\(\w\)\.\(\w\)'
 let b:child_sub = '\1/\2'
 
+" Matchit support
+if exists('loaded_matchit') && !exists('b:match_words')
+  let b:match_words = '\<if\>:\<elif\>:\<else\>'
+  let b:match_skip = 'R:^\s*'
+endif
+
 setlocal includeexpr=substitute(substitute(substitute(
       \v:fname,
       \b:grandparent_match,b:grandparent_sub,''),
@@ -177,6 +183,8 @@ let b:undo_ftplugin = 'setlocal cinkeys<'
       \ . '|unlet! b:child_sub'
       \ . '|unlet! b:grandparent_match'
       \ . '|unlet! b:grandparent_sub'
+      \ . '|unlet! b:match_skip'
+      \ . '|unlet! b:match_words'
       \ . '|unlet! b:next'
       \ . '|unlet! b:next_end'
       \ . '|unlet! b:next_endtoplevel'
